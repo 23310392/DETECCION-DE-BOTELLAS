@@ -2,22 +2,17 @@
 from ultralytics import YOLO
 import os
 
-# ─── CONFIGURACIÓN ───────────────────────────────────────────
 DATASET_YAML = "dataset/data.yaml"  
-MODELO_BASE  = "yolov8n.pt"            # nano: el más rápido para Codespaces sin GPU
+MODELO_BASE  = "yolov8n.pt"           
 EPOCHS       = 50
-BATCH        = 8                       # baja a 4 si te da error de memoria
+BATCH        = 8                       
 IMG_SIZE     = 640
-# ─────────────────────────────────────────────────────────────
 
-# Verificar que el yaml existe antes de entrenar
+
 if not os.path.exists(DATASET_YAML):
-    print(f"❌ No se encontró: {DATASET_YAML}")
-    print("📁 Archivos en el directorio actual:")
-    for f in os.listdir("."):
-        print(f"   {f}")
+    print(f" No se encontró")
 else:
-    print(f"✅ Dataset encontrado: {DATASET_YAML}")
+    print(f" Dataset encontrado: {DATASET_YAML}")
 
     model = YOLO(MODELO_BASE)
 
@@ -31,6 +26,4 @@ else:
         device="cpu",
         workers=2,
     )
-
-    print("\n✅ Entrenamiento terminado")
-    print(f"📂 Resultados guardados en: {resultados.save_dir}")
+    print(f" Resultados guardados en: {resultados.save_dir}")
