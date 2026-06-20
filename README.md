@@ -17,7 +17,10 @@ source venv/bin/activate   # Linux/Mac
 venv\Scripts\activate      # Windows
 
 # Instalar dependencias
-pip install -r requirements.txt
+Colocar en la terminal las siguientes lineas:
+
+sudo apt-get update && sudo apt-get install -y libgl1
+pip install ultralytics
 
 # Ejecutar entrenamiento o pruebas
 python train.py
